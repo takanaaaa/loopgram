@@ -1,0 +1,32 @@
+<section class="hero">
+  <div calss="hero-body card">
+    <div class="container">
+      <h1 class="title">
+        Forgot your password?
+      </h1>
+    </div>
+    <div class="container mt-5">
+      <div class="columns is-left">
+        <div class="column is-5">
+          <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+          <%= render "devise/shared/error_messages", resource: resource %>
+
+          <div class="field">
+            <%= f.label :email %>
+            <P class="control has-icons-left">
+              <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+            </P>
+          </div>
+
+          <div class="actions my-4">
+            <%= f.submit "Send me reset password instructions" %>
+          </div>
+          <% end %>
+          <%= render "devise/shared/links" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+

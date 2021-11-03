@@ -1,0 +1,52 @@
+<section class="hero-main">
+  <div class="container">
+    <h1 class="title">
+      投稿一覧
+    </h1>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-multiline">
+      <% @shops.each do |shop| %>
+        <div class="column is-3">
+          <div class="card">
+            <div class="card-content">
+              <%= link_to shop_path(shop) do %>
+                <div class="card-image">
+                  <figure class="image is-4by3">
+                    <%= attachment_image_tag shop, :image %>
+                  </figure>
+                </div>
+                <div class="field p-3">
+                  <p>
+                    <span class="icon is-small">
+                      <i class="fas fa-map-marker-alt"></i>
+                    </span>
+                    <%= shop.shop_address%>
+                  </p>
+                </div>
+              <% end %>
+              <div class="card-content p-0">
+                <div class="media m-0">
+                  <div class="media-left">
+                    <figure class="image is-32x32">
+                      <%= attachment_image_tag shop.user, :profile_image, fallback: "nophoto_thumbnail.png", class: "profile_image" %>
+                    </figure>
+                  </div>
+                  <div class="media-content">
+                    <div class="title is-size-5"><%=link_to shop.user.username, user_path(shop.user) %></div>
+                  </div>
+                </div>
+                <div class="content">
+                  <time><%= shop.updated_at.strftime("%Y-%m-%d %H:%M") %></time>更新
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>
